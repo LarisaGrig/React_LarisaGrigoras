@@ -1,0 +1,60 @@
+body {
+	overflow-x: hidden;
+	background-color: #d6d2b4;
+}
+.main-image {
+  background: url(https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 60vh;
+}
+.text__style {
+	color: #b16da8;
+	font-weight: 300;
+	font-size: 100px;
+}
+.text__style i {
+	color: #b16da8;
+	padding-right: 20px;
+	font-size: 85px;
+}
+.input__style:focus,
+.input__style:hover,
+.input__style:visited,
+.input__style:active {
+	outline: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.main-footer {
+	flex:1;
+}
+
+@media (max-width: 768px) { 
+	.text__style {
+		font-size: 70px;
+	}
+	.text__style i {
+		font-size: 65px;
+	}
+}
+
+
+@media (max-width: 425px) {  
+	.text__style {
+		font-size: 55px;
+	}
+	.text__style i {
+		font-size: 45px;
+	}
+}
+
+
