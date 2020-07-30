@@ -1,0 +1,143 @@
+body {
+	overflow-x: hidden;
+	background-color: #c5c5f8;
+}
+.main-image {
+  background: url(https://cdn.pixabay.com/photo/2015/12/08/01/04/bookshelf-1082309_960_720.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+	height: 250px;
+}
+.text__style {
+	margin-top: 15px;
+	color: white;
+	font-weight: 400;
+	font-size: 84px;
+	background-color: rgba(61, 156, 170, 0.7);
+	line-height: 85%;
+	padding: 0 10px 5px 5px;
+	border-radius: 10px;
+	margin-bottom: 30px;	
+}
+.input-group {
+	height: 37px;
+	max-width: 450px;
+}
+.input__style:focus,
+.input__style:hover,
+.input__style:visited,
+.input__style:active {
+	outline: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.page-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: space-between;
+}
+/* ------------- Card------------{} */
+.card-container {
+	display: flex;
+	flex-direction: row !important;
+	justify-content: space-between;
+	width: 470px !important;
+	height: 250px !important;
+	background-color: white;
+	border-radius: 15px;
+	padding: 15px;
+	margin: 20px;
+}
+.card-img__container {
+	max-width: 150px !important;	
+}
+.card-img {
+	max-height: 220px;
+	max-width: 150px;
+}
+.text__container {
+	width: 270px !important;
+}
+.card-title, .card-author {
+  overflow: hidden;
+  color: black;
+  font-weight: 400;
+  font-size: 16px;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+.btn-link {
+	font-size: 20px;
+}
+.response__container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+/* ------------- Footer ------------{} */
+.main-footer {
+	flex:1;
+	max-height: 150px;
+	color: white;
+	background-color: #21172c;
+	padding: 50px 0;
+}
+.main-footer .row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+
+/* ------------- adaptive ------------{} */
+
+@media (max-width: 768px) {  
+	.main-footer .row {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+}
+
+@media (max-width: 768px) { 
+	.text__style {
+		font-size: 70px;
+	}
+
+}
+
+@media (max-width: 516px) {  
+	.input-group {
+		max-width: 310px;
+	}
+	.card-container {
+		display: flex;
+		flex-direction: column !important;
+		width: 300px !important;
+		height: 400px !important;
+		padding: 15px;
+		margin: 20px 0;
+	}
+
+}
+
+
+@media (max-width: 425px) {  
+	.text__style {
+		font-size: 55px;
+	}
+
+}
+
+

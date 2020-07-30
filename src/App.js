@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import './index.css';
-import {InputGroup, Input, InputGroupAddon, Button, Spinner} from 'reactstrap';
-import { ToastContainer, toast } from 'react-toastify';
+import './App.css';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import axios from 'axios';
-import BookCard from './Components/BookCard.js';
-import Footer from './Components/Footer.js';
+import BookCard from './BookCard.js';
+import Footer from './Footer.js';
 
 function App() {
+
   // States
   const [maxResults] = useState(40);
   const [startIndex] = useState(1);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [cards, setCards] = useState([]);
+	const [cards, setCards] = useState([]);
+	
   // Handle Search
-  const handleSubmit = () => {
+	const handleSubmit = () => {
     setLoading(true);
     if (maxResults > 40 || maxResults < 1) {
       toast.error('max results must be between 1 and 40');
@@ -41,76 +42,60 @@ function App() {
           console.log(err.response);
         });
     }
-  };
-  // Main Show Case
+	};
+	
+  // Header
   const mainHeader = () => {
     return (
       <div className='main-image d-flex justify-content-center align-items-center flex-column'>
-        <h1 className='display-2 text-center text__style mb-3' style={{ zIndex: 2 }}>
-				<i class="fas fa-dragon"></i>DragonBook
-        </h1>
-        <div style={{ width: '60%', zIndex: 2 }}>
-          <InputGroup size='sm' className='mb-3'>
-            <Input
-							className='input__style'
-              placeholder='Cerca libri'
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-            />
-            <InputGroupAddon addonType='append'>
-              <Button className='input__style' color='info' onClick={handleSubmit}>
-                <i className='fas fa-search'></i>
-              </Button>
-            </InputGroupAddon>
-          </InputGroup>
-        </div>
+        <h1 className='display-2 text-center text__style'>FlowerBook</h1>     
+
+				<div class="input-group mb-3">
+					<input 
+						type="text" 
+						class="form-control input__style" 
+						value={query}
+						onChange={e => setQuery(e.target.value)} 
+						placeholder="Cerca libri" 
+						aria-describedby="button-addon2"/>
+					<div class="input-group-append">
+						<button onClick={handleSubmit} class="btn btn-info" type="button" id="button-addon2">
+						<i className='fas fa-search'></i>
+						</button>
+					</div>					
+				</div>
+        
       </div>
     );
   };
 
-  const handleCards = () => {
-    if (loading) {
-      return (
-        <div className='d-flex justify-content-center mt-3'>
-          <Spinner style={{ width: '3rem', height: '3rem' }} />
-        </div>
-      );
-    } else {
-      const items = cards.map((item, i) => {
-        let thumbnail = '';
-        if (item.volumeInfo.imageLinks) {
-          thumbnail = item.volumeInfo.imageLinks.thumbnail;
-        }
-
-        return (
-          <div className='col-lg-4 mb-3' key={item.id}>
-            <BookCard
-              thumbnail={thumbnail}
-              title={item.volumeInfo.title}
-              pageCount={item.volumeInfo.pageCount}
-              language={item.volumeInfo.language}
-              authors={item.volumeInfo.authors}
-              publisher={item.volumeInfo.publisher}
-              description={item.volumeInfo.description}
-              previewLink={item.volumeInfo.previewLink}
-              infoLink={item.volumeInfo.infoLink}
-            />
-          </div>
-        );
-      });
-      return (
-        <div className='container my-5'>
-          <div className='row'>{items}</div>
-        </div>
-      );
-    }
-  };
+  const handleCards = () => { 
+		const items = cards.map((item, i) => {
+			let thumbnail = '';
+			if (item.volumeInfo.imageLinks) { thumbnail = item.volumeInfo.imageLinks.thumbnail; }
+			return (
+				<div className='' key={item.id}>
+					<BookCard
+						thumbnail={thumbnail}
+						title={item.volumeInfo.title}
+						authors={item.volumeInfo.authors}
+						infoLink={item.volumeInfo.infoLink}
+					/>
+				</div>
+			);
+		});
+		return (
+			<div className='container my-5'>
+				<div className='row response__container'>{items}</div>
+			</div>
+		);    
+	};
+	
   return (
     <div className='w-100 h-100 page-container'>
       {mainHeader()}
       {handleCards()}
-      <ToastContainer/>
-			<Footer/>
+			{Footer()}
     </div>
   );
 }
